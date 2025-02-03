@@ -5,10 +5,10 @@
   "type": "module",
   "main": "app.ts",
   "scripts": {
-    "start": "tsx src/server.ts",
-    "dev": "nodemon --exec tsx app.ts",
-    "test": "jest --config=jest.config.js",
+    "start": "node dist/app.js",
     "build": "tsc",
+    "dev": "nodemon --exec tsx src/app.ts",
+    "test": "jest --config=jest.config.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },

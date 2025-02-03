@@ -2,8 +2,8 @@ import Koa from 'koa';
 import Router from '@koa/router';
 import cors from '@koa/cors';
 import bodyParser from 'koa-bodyparser';
-import { createGetBalanceSheetHandler } from './src/routes/getBalanceSheetHandler';
-import { createApiClients } from './src/apiClients';
+import { createGetBalanceSheetHandler } from './routes/getBalanceSheetHandler';
+import { createApiClients } from './apiClients';
 import { config } from './config';
 
 const app = new Koa();

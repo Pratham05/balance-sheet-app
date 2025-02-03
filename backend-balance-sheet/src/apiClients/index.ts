@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { createXeroApiClient, XeroApiClient } from './xeroApiClient';
-import { Config } from '../../config';
+import { Config } from '../config';
 
 interface ApiClients {
   xeroClient: XeroApiClient;
