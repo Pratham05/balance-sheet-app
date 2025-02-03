@@ -17,8 +17,21 @@ describe('createGetBalanceSheetHandler', () => {
 
   afterEach(jest.resetAllMocks);
 
-  it('should return balance sheet data and set status 200', async () => {
-    const mockData = { assets: 1000, liabilities: 500 };
+  it('should return balance sheet data and set status 200 when usecase returns a successful response', async () => {
+    const mockData = {
+      reportDate: '23 February 2018',
+      reportId: 'report-id',
+      reportName: 'My mock Report',
+      reportTitles: [
+        'Balance Sheet',
+        'Demo Company (AU)',
+        'As at 28 February 2018',
+      ],
+      reportType: 'BalanceSheet',
+      rows: [],
+      updatedDateUtc: '/Date(1519358515899)/',
+    };
+
     mockedGetBalanceSheet.mockResolvedValue({ data: mockData });
 
     await handler(mockContext as Context);
@@ -30,7 +43,7 @@ describe('createGetBalanceSheetHandler', () => {
     expect(mockContext.body).toEqual(mockData);
   });
 
-  it('should handle errors and set appropriate status code when the use case returns an error', async () => {
+  it('should return error and set received status code when the usecase returns an error', async () => {
     const mockError = {
       name: '',
       message: 'Error processing balance sheet data',
@@ -46,7 +59,7 @@ describe('createGetBalanceSheetHandler', () => {
     });
   });
 
-  it('should set status 500 for unexpected errors when there is an unexpected erorr', async () => {
+  it('should return error and set status 500 when there is an unexpected erorr', async () => {
     mockedGetBalanceSheet.mockRejectedValue(new Error('Unexpected error'));
 
     await handler(mockContext as Context);

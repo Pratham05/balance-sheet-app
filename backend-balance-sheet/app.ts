@@ -8,7 +8,7 @@ import { config } from './config';
 
 const app = new Koa();
 const router = new Router();
-const PORT = process.env.PORT || 4000;
+const PORT = config.PORT || 4000;
 
 const apiClients = createApiClients(config);
 

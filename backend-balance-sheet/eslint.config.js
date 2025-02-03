@@ -15,7 +15,6 @@ export default [
     rules: {
       ...eslintConfigPrettier.rules,
       'prettier/prettier': 'error',
-      '@typescript-eslint/no-unused-vars': 'warn',
     },
   },
 ];
