@@ -17,7 +17,7 @@ router.get('/api/balance-sheet', createGetBalanceSheetHandler(apiClients));
 app.use(
   cors({
     origin: '*',
-    allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowMethods: ['GET'],
     allowHeaders: ['Content-Type', 'Authorization'],
   })
 );
