@@ -18,21 +18,19 @@ describe('createGetBalanceSheetHandler', () => {
   afterEach(jest.resetAllMocks);
 
   it('should return balance sheet data and set status 200 when usecase returns a successful response', async () => {
-    const mockData = [
-      {
-        reportDate: '23 February 2018',
-        reportId: 'report-id',
-        reportName: 'My mock Report',
-        reportTitles: [
-          'Balance Sheet',
-          'Demo Company (AU)',
-          'As at 28 February 2018',
-        ],
-        reportType: 'BalanceSheet',
-        rows: [],
-        updatedDateUtc: '/Date(1519358515899)/',
-      },
-    ];
+    const mockData = {
+      reportDate: '23 February 2018',
+      reportId: 'BalanceSheet',
+      reportName: 'My mock Report',
+      reportTitles: [
+        'Balance Sheet',
+        'Demo Company (AU)',
+        'As at 28 February 2018',
+      ],
+      reportType: 'BalanceSheet',
+      rows: [],
+      updatedDateUtc: '/Date(1519358515899)/',
+    };
 
     mockedGetBalanceSheet.mockResolvedValue({ data: mockData });
 

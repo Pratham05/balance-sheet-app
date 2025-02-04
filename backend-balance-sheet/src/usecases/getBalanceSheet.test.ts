@@ -15,11 +15,11 @@ describe('getBalanceSheet', () => {
 
   afterEach(jest.resetAllMocks);
 
-  it('should return balance sheet data when API call succeeds', async () => {
+  it('should return balance sheet data when API call succeeds and response contains Balance Sheet report', async () => {
     const mockResponse = {
       Reports: [
         {
-          ReportID: 'report-id',
+          ReportID: 'BalanceSheet',
           ReportName: 'My mock Report',
           ReportType: 'BalanceSheet',
           ReportTitles: [
@@ -40,7 +40,7 @@ describe('getBalanceSheet', () => {
 
     expect(result).toHaveProperty('data', {
       reportDate: '23 February 2018',
-      reportId: 'report-id',
+      reportId: 'BalanceSheet',
       reportName: 'My mock Report',
       reportTitles: [
         'Balance Sheet',
@@ -53,6 +53,37 @@ describe('getBalanceSheet', () => {
     });
 
     expect(mockXeroClient.getBalanceSheet).toHaveBeenCalledTimes(1);
+  });
+
+  it('should return a BalanceSheetError when API response does not contain Balance Sheet report', async () => {
+    const mockResponseWithoutBalanceSheet = {
+      Reports: [
+        {
+          ReportID: 'no-balance-sheet',
+          ReportName: 'My mock Report',
+          ReportType: 'BalanceSheet',
+          ReportTitles: [
+            'Balance Sheet',
+            'Demo Company (AU)',
+            'As at 28 February 2018',
+          ],
+          ReportDate: '23 February 2018',
+          UpdatedDateUTC: '/Date(1519358515899)/',
+          Rows: [],
+        },
+      ],
+    };
+
+    mockXeroClient.getBalanceSheet.mockResolvedValue(
+      mockResponseWithoutBalanceSheet
+    );
+
+    const result: BalanceSheetResult = await getBalanceSheet(mockXeroClient);
+
+    expect(result).toHaveProperty(
+      'error',
+      new BalanceSheetError('Error processing balance sheet data', 500)
+    );
   });
 
   it('should return a BalanceSheetError when API call fails', async () => {

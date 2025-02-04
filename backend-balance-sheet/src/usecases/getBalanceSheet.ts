@@ -28,9 +28,7 @@ interface BalanceSheetCell {
   attributes?: { id: string; value: string }[];
 }
 
-type BalanceSheetResult =
-  | { data: BalanceSheet[] }
-  | { error: BalanceSheetError };
+type BalanceSheetResult = { data: BalanceSheet } | { error: BalanceSheetError };
 
 const getBalanceSheet = async (
   xeroClient: XeroApiClient
@@ -49,16 +47,22 @@ const getBalanceSheet = async (
 
 const mapBalanceSheetResponseToBalanceSheet = (
   response: BalanceSheetResponse
-): BalanceSheet[] => {
-  return response.Reports.map((report) => ({
-    reportId: report.ReportID,
-    reportName: report.ReportName,
-    reportType: report.ReportType,
-    reportTitles: report.ReportTitles,
-    reportDate: report.ReportDate,
-    updatedDateUtc: report.UpdatedDateUTC,
-    rows: report.Rows.map(mapBalanceSheetRow),
-  }));
+): BalanceSheet => {
+  const balanceSheetReport = response.Reports.find(
+    (report) => report.ReportID === 'BalanceSheet'
+  );
+  if (!balanceSheetReport) {
+    throw new Error('Could not find balance sheet report in response');
+  }
+  return {
+    reportId: balanceSheetReport.ReportID,
+    reportName: balanceSheetReport.ReportName,
+    reportType: balanceSheetReport.ReportType,
+    reportTitles: balanceSheetReport.ReportTitles,
+    reportDate: balanceSheetReport.ReportDate,
+    updatedDateUtc: balanceSheetReport.UpdatedDateUTC,
+    rows: balanceSheetReport.Rows.map(mapBalanceSheetRow),
+  };
 };
 
 const mapBalanceSheetRow = (row: BalanceSheetResponseRow): BalanceSheetRow => {
