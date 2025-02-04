@@ -85,8 +85,8 @@ const createXeroApiClient = (axiosInstance: AxiosInstance): XeroApiClient => {
 
 export {
   createXeroApiClient,
-  XeroApiClient,
-  BalanceSheetResponse,
-  BalanceSheetResponseRow,
-  BalanceSheetResponseCell,
+  type XeroApiClient,
+  type BalanceSheetResponse,
+  type BalanceSheetResponseRow,
+  type BalanceSheetResponseCell,
 };

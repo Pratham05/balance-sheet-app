@@ -1,9 +1,11 @@
+import { Linter } from 'eslint';
 import eslintPluginPrettier from 'eslint-plugin-prettier';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import typescriptPlugin from '@typescript-eslint/eslint-plugin';
 
-export default [
+const configs: Linter.Config[] = [
   {
+    ignores: ['dist/**', 'node_modules/**'],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
@@ -18,3 +20,5 @@ export default [
     },
   },
 ];
+
+export default configs;

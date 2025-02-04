@@ -14,4 +14,4 @@ const createApiClients = (config: Config): ApiClients => {
   };
 };
 
-export { createApiClients, ApiClients };
+export { createApiClients, type ApiClients };

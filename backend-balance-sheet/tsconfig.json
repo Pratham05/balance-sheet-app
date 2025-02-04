@@ -1,35 +1,38 @@
 {
   "compilerOptions": {
-    "target": "ES2022",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "resolveJsonModule": true,
+    "incremental": true,
+    "isolatedModules": true,
     "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "lib": ["ES2022"],
+    "outDir": "dist",
+    "target": "ES2022",
+    "module": "commonjs",
+    "allowJs": true,
+    "removeComments": true,
+    "strict": true,
     "noImplicitAny": true,
+    "strictBindCallApply": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "listEmittedFiles": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "src": ["src"]
+    }
   },
-  "include": ["src/**/*.ts"],
-  "exclude": ["node_modules", "dist"]
+  "exclude": ["node_modules", "lib", "./*js"]
 }
-
-// {
-//   "compileroptions": {
-//     "outDir": "./dist",
-//     "lib": ["es5", "es6"],
-//     "target": "es6",
-//     "module": "commonjs",
-//     "moduleResolution": "node",
-//     "emitDecoratorMetadata": true,
-//     "experimentalDecorators": true
-//   },
-//   "include": ["src/**/*.ts"],
-//   "exclude": ["node_modules", "dist"]
-// }
