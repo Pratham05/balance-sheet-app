@@ -32,20 +32,17 @@ Fetches the balance sheet report from the Xero API and returns the financial dat
 
 ```json
 {
-  "success": true,
-  "data": {
-    "reportId": "BalanceSheet",
-    "reportName": "Balance Sheet",
-    "reportType": "BalanceSheet",
-    "reportTitles": [
-      "Balance Sheet",
-      "Demo Company (AU)",
-      "As at 28 February 2018"
-    ],
-    "reportDate": "23 February 2018",
-    "updatedDateUtc": "/Date(1519358515899)/",
-    "rows": []
-  }
+  "reportId": "BalanceSheet",
+  "reportName": "Balance Sheet",
+  "reportType": "BalanceSheet",
+  "reportTitles": [
+    "Balance Sheet",
+    "Demo Company (AU)",
+    "As at 28 February 2018"
+  ],
+  "reportDate": "23 February 2018",
+  "updatedDateUtc": "/Date(1519358515899)/",
+  "rows": []
 }
 ```
 
@@ -53,7 +50,6 @@ Fetches the balance sheet report from the Xero API and returns the financial dat
 
 ```json
 {
-  "success": false,
   "error": "Failed to fetch balance sheet data from Xero API"
 }
 ```
@@ -97,19 +93,14 @@ docker run -p 4000:4000 balance-sheet-backend
 backend-balance-sheet/
 │── src/
 │   ├── apiClients/      # API clients (e.g., Xero API)
-│   ├── routes/          # HTTP request route handlers
+│   ├── handlers/        # HTTP request route handlers
 │   ├── usecases/        # Business logic
 │   ├── errors/          # Custom error classes
 │   ├── config.ts        # Configuration settings
 │   ├── app.ts           # Entry point
 │── package.json         # Dependencies & scripts
 │── Dockerfile           # Containerization
-│── README.md            # Project Documentation
 ```
-
-## Contributing
-
-Feel free to submit issues or open pull requests to improve this service.
 
 ## License
 

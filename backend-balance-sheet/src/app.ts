@@ -2,7 +2,7 @@ import Koa from 'koa';
 import Router from '@koa/router';
 import cors from '@koa/cors';
 import bodyParser from 'koa-bodyparser';
-import { createGetBalanceSheetHandler } from './routes/getBalanceSheetHandler';
+import { createGetBalanceSheetHandler } from './handlers/getBalanceSheetHandler';
 import { createApiClients } from './apiClients';
 import { config } from './config';
 
