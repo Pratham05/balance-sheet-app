@@ -1,0 +1,35 @@
+services:
+  xero-api:
+    image: jaypeng2015/show-me-the-money
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+
+  backend:
+    build: ./backend-balance-sheet
+    ports:
+      - "4000:4000"
+    depends_on:
+      - xero-api
+    networks:
+      - app-network
+    volumes:
+      - ./backend-balance-sheet:/app
+    command: pnpm start
+
+  frontend:
+    build: ./frontend-balance-sheet
+    ports:
+      - "3001:3001"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+    volumes:
+      - ./frontend-balance-sheet:/app
+    command: pnpm start
+
+networks:
+  app-network:
+    driver: bridge
