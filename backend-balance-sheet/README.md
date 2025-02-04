@@ -66,16 +66,16 @@ Fetches the balance sheet report from the Xero API and returns the financial dat
 
 ```sh
 # Install dependencies
-pnpm install  # or npm install
+pnpm install
 
 # Start the server
-pnpm run dev  # or npm run dev
+pnpm run dev
 ```
 
 ### Running Tests
 
 ```sh
-pnpm test  # or npm test
+pnpm test
 ```
 
 ## Docker Setup

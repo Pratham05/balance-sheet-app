@@ -7,7 +7,7 @@ It integrates with the backend service and renders the balance sheet in a table.
 
 ## Tech Stack
 
-- **React 18** - UI Framework.
+- **React 19** - UI Framework.
 - **TypeScript** - Ensures type safety and maintainability.
 - **Axios** - For HTTP requests.
 - **React Testing Library + Jest** – Unit tests
@@ -34,7 +34,7 @@ pnpm start
 ### Running Tests
 
 ```sh
-pnpm test  # or npm test
+pnpm test
 ```
 
 ## Docker Setup
