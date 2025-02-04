@@ -14,8 +14,15 @@ const apiClients = createApiClients(config);
 
 router.get('/api/balance-sheet', createGetBalanceSheetHandler(apiClients));
 
+app.use(
+  cors({
+    origin: '*',
+    allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowHeaders: ['Content-Type', 'Authorization'],
+  })
+);
+
 app.use(router.routes()).use(router.allowedMethods());
-app.use(cors());
 app.use(bodyParser());
 
 app.listen(PORT, () => {

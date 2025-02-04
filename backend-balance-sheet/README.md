@@ -19,7 +19,7 @@ This is a backend service built using Koa.js and TypeScript to fetch and serve B
 - **TypeScript** - Ensures type safety and maintainability.
 - **Axios** - For HTTP requests.
 - **Zod** - For validating API responses.
-- **Jest & Supertest** - For unit testing.
+- **Jest** - For unit testing.
 - **Docker** - For containerized deployment.
 
 ## API Endpoints
@@ -59,7 +59,7 @@ Fetches the balance sheet report from the Xero API and returns the financial dat
 ### Prerequisites
 
 - Node.js (v16+ recommended)
-- pnpm
+- pnpm (v9.15.4)
 - Docker (optional for containerization)
 
 ### Installation Steps
